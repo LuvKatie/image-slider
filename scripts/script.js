@@ -45,9 +45,6 @@ function prevImage() {
     });
 }
 
-// const corgiImg = document.getElementById("corgi-slide");
-// const goldenImg = document.getElementById("golden-slide");
-// const pugImg = document.getElementById("pug-slide");
 imageClasses();
 prevImage();
 nextImage();

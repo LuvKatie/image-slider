@@ -23,7 +23,7 @@ body {
     position: relative;
     display: flex;
     grid-area: images;
-    background-color: antiquewhite;
+    background-color: #eaf6f6;
 }
 
 .image-slider > img {
