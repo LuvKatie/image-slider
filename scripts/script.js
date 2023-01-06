@@ -10,6 +10,13 @@ function imageClasses() {
     })
 }
 
+function scrollAnimation(scrollImage, currImage, imgClass) {
+    scrollImage.classList.add(`${imgClass}`, "active-slide");
+    scrollImage.classList.remove("inactive-slide");
+    currImage.className = "";
+    currImage.classList.add("inactive-animation", "inactive-slide");
+}
+
 function nextImage() {
     const nextArrow = document.getElementById("next-arrow");
     const images = document.querySelectorAll(".image-slider > img");
@@ -17,10 +24,7 @@ function nextImage() {
     nextArrow.addEventListener("click", () => {
         for (i = 0; i < images.length; i++) {
             if (images[i].classList.contains("active-slide") && images[i + 1] !== undefined) {
-                images[i + 1].classList.add("next-active", "active-slide");
-                images[i + 1].classList.remove("inactive-slide");
-                images[i].classList.remove("first-slide", "next-active", "active-slide");
-                images[i].classList.add("inactive-animation");
+                scrollAnimation(images[i + 1], images[i], "next-active");
                 return;
             }
         }
@@ -32,17 +36,12 @@ function prevImage() {
     const images = document.querySelectorAll(".image-slider > img");
 
     prevArrow.addEventListener("click", () => {
-        images.forEach(img => {
-            if (img.classList.contains("active-slide")) {
-                for (i = 0; i <= images.length; i++) {
-                    if (img == images[i] && img !== images[0]) {
-                        images[i - 1].classList.add("next-active");
-                        images[i - 1].classList.remove("inactive-slide");
-                        img.classList.add("inactive-animation");
-                    }
-                }
+        for (i = 0; i < images.length; i++) {
+            if (images[i].classList.contains("active-slide") && images[i] !== images[0]) {
+                scrollAnimation(images[i - 1], images[i], "prev-active");
+                return;
             }
-        })
+        }
     });
 }
 
