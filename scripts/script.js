@@ -100,6 +100,26 @@ function prevImage() {
     });
 }
 
+const slideInterval = setInterval(function () {
+    const images = document.querySelectorAll(".image-slider > img");
+    const length = images.length;
+
+    for (i = 0; i < length; i++) {
+        if (images[i].classList.contains("active-slide") && images[i + 1] !== undefined) {
+            scrollAnimation(images[i + 1], images[i], "next-active");
+            indicatorStyling();
+            return;
+        }
+
+        if (images[i + 1] == undefined) {
+            scrollAnimation(images[0], images[i], "next-active");
+            indicatorStyling();
+            return;
+        }
+    }
+    
+}, 5000);
+
 imgIndicators();
 imageClasses();
 prevImage();
