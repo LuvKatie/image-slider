@@ -17,7 +17,6 @@ function indicatorEvents() {
     const images = document.querySelectorAll(".image-slider > img");
     const indicators = document.querySelectorAll(".indicator");
     const indicatorArr = Array.from(indicators);
-    const currImage = document.querySelector(".active-slide");
 
     indicators.forEach(indi => {
         indi.addEventListener("click", () => {
