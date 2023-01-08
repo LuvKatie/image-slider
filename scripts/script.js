@@ -14,7 +14,24 @@ function imgIndicators() {
 }
 
 function indicatorEvents() {
+    const images = document.querySelectorAll(".image-slider > img");
+    const indicators = document.querySelectorAll(".indicator");
+    const indicatorArr = Array.from(indicators);
+    const currImage = document.querySelector(".active-slide");
 
+    indicators.forEach(indi => {
+        indi.addEventListener("click", () => {
+            const index = indicatorArr.indexOf(indi);
+            images.forEach(img => {
+                if (img.classList.contains("active-slide")) {
+                    img.className = "inactive-slide";
+                    return;
+                }
+            });
+            images[index].className = "active-slide";
+            indicatorStyling();
+        });
+    });
 }
 
 function indicatorStyling() {
@@ -88,3 +105,4 @@ imgIndicators();
 imageClasses();
 prevImage();
 nextImage();
+indicatorEvents();
